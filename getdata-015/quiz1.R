@@ -36,3 +36,38 @@ fileurl = "restaurants.xml"
 doc <- xmlTreeParse(fileurl,useInternal = TRUE)
 rootNode <- xmlRoot(doc)
 table(xpathSApply(doc,"//zipcode",xmlValue))
+
+#quiz3
+q1
+Idaho <- read.csv("getdata-data-ss06hid.csv")
+
+#ACR 1
+#Lot size
+#b .N/A (GQ/not a one-family house or mobile home)
+#1 .House on less than one acre
+#2 .House on one to less than ten acres
+#3 .House on ten or more acres
+#AGS 1
+#Sales of Agriculture Products
+# b.N/A (less than 1 acre/GQ/vacant/
+#  .2 or more units in structure)
+#1 .None
+#2 .$ 1 - $ 999
+#3 .$ 1000 - $ 2499
+#4 .$ 2500 - $ 4999
+#5 .$ 5000 - $ 9999
+#6 .$10000+
+
+agricultureLogical <- Idaho$ACR == "3" & Idaho$AGS == "6"
+
+which(agricultureLogical)
+# [1]  125  238  262  470  555 ...
+
+q2
+
+library(jpeg)
+jf <-  readJPEG( "jeff.jpg", native = TRUE)
+quantile(jf, probs= c(0.3,0.8))
+
+#      30%       80% 
+#-15259150 -10575416 
